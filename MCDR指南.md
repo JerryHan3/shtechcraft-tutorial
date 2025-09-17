@@ -64,9 +64,15 @@ MCDR内置两个命令：`!!MCDR`和`!!help`。你安装的插件也会提供其
 关于内置命令的用法，请查阅[官方文档](https://docs.mcdreforged.com/zh-cn/latest/command/index.html)。
 
 > [!IMPORTANT]
-> 使用TrChat等修改玩家聊天格式的插件时，**玩家无法在游戏内调用MCDR命令**。这是因为MCDR捕获游戏内消息时只会遵循原版游戏的样式。查阅[代码](https://github.com/MCDReforged/MCDReforged/blob/d6a7516015cde1c1238901104129376ec99e3f64/mcdreforged/handler/impl/bukkit_handler.py#L25)发现，MCDR会使用正则表达式`r'<(?P<name>[^>]+)> (?P<message>.*)'`来匹配游戏后台输出中的玩家信息。这一表达式只会匹配带有“<*玩家名*>”前缀的消息。
+> 使用TrChat等修改玩家聊天格式的插件时，**玩家无法在游戏内调用MCDR命令**。这是因为MCDR捕获游戏内消息时只会遵循原版游戏的样式。查阅[代码](https://github.com/MCDReforged/MCDReforged/blob/d6a7516015cde1c1238901104129376ec99e3f64/mcdreforged/handler/impl/bukkit_handler.py#L25)发现，MCDR会使用正则表达式`r'<(?P<name>[^>]+)> (?P<message>.*)'`来匹配游戏后台输出中的玩家信息。这一表达式只会匹配带有“<*玩家名*>”前缀的消息。  
 > 如有需要，建议添加一个频道，并把该频道内的聊天消息格式恢复为原版格式，这样该频道内发送的聊天消息便可被MCDR匹配。
 
-## 插件安装与推荐
+## 插件简介
 
-> To be continued...
+MCDR具有丰富的插件，能够帮助你实现各类功能，小至计算器、高亮玩家、B站弹幕姬，大至操控计分板、管理结构文件、自助备份回档等等。
+
+MCDR现在有一个官方的[**插件仓库**](https://mcdreforged.com/zh-CN/plugins)，收录了各种常用的插件。
+
+你可以通过`!!MCDR plg install xxx`命令来从插件仓库直接获取插件。
+
+注意，有些插件可能需要依赖其他Python库、或其他软件才能运行，请仔细阅读插件的说明，并处理好各个依赖项。如果你使用docker运行MCDR，建议持久化保存`site-packages`相关文件，详见[官方文档](https://docs.mcdreforged.com/zh-cn/latest/docker.html#)。
